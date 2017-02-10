@@ -26,7 +26,6 @@ void loop() {
   }
   setpoint = temp / 500;                              // modify division to fit motor and encoder characteristics
   input = encoderPos ;                                // data from encoder
-  Serial.println(temp);
   myPID.Compute();                                    // calculate new output
   pwmOut(output);                                     // drive L298N H bridge module
 }
