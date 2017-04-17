@@ -2,7 +2,7 @@
 #include <PID_v1.h>                                   // Thanks to Brett Beauregard for his nice PID library http://brettbeauregard.com/blog/2011/04/improving-the-beginners-pid-introduction/
 #define encodPinA1      2                             // Quadrature encoder A pin
 #define encodPinB1      8                             // Quadrature encoder B pin
-#define M1              9                             // PWM outputs to L298N H bridge motor driver module
+#define M1              9                             // PWM outputs to L298N H-Bridge motor driver module
 #define M2              10
 double kp = 5 , ki = 1 , kd = 0.01 ,input = 0, output = 0, setpoint = 0;   // modify kp, ki and kd for optimal performance
 long temp;
@@ -27,7 +27,7 @@ void loop() {
   setpoint = temp / 500;                              // modify division to fit motor and encoder characteristics
   input = encoderPos ;                                // data from encoder
   myPID.Compute();                                    // calculate new output
-  pwmOut(output);                                     // drive L298N H bridge module
+  pwmOut(output);                                     // drive L298N H-Bridge module
 }
 void pwmOut(int out) {                                // to H-Bridge board
   if (out > 0) {
@@ -40,7 +40,7 @@ void pwmOut(int out) {                                // to H-Bridge board
   }
 }
 void encoder()  {                                     // pulse and direction, direct port reading to save cycles
-  if (PINB & 0b00000001)    encoderPos++;             // if(digitalRead(encodPinB1)==HIGH)   count ++;
+  if (PINB & 0b00000001)    encoderPos++;             // if (digitalRead(encodPinB1)==HIGH)  count ++;
   else                      encoderPos--;             // if (digitalRead(encodPinB1)==LOW)   count --;
 }
 
