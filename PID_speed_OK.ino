@@ -19,7 +19,7 @@ void setup() {
   myPID.SetOutputLimits(-255, 255);
 }
 void loop() {
-  temp += analogRead(0);                              // increment position target with potentiometer value (speed)
+  temp += analogRead(0);                              // increment position target with potentiometer value (speed), potmeter connected to A0
   if (temp < 0) {                                     // in case of overflow
     encoderPos = 0;
     temp = 0;
